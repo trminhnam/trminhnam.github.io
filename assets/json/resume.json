@@ -1,61 +1,51 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Minh-Nam Tran",
+    "label": "Undergraduate Student & Research Assistant",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "tmnam20@apcs.fitus.edu.vn",
+    "phone": "(038) 256 3952",
+    "url": "https://trminhnam.github.io/",
+    "summary": "A student at FIT-HCMUS and research assistant at Computational Linguistic Center - HCMUS. I am interested in Machine Learning, Deep Learning and Natural Language Processing, especially in the application of Large Language Models. :smiley:",
     "location": {
-      "address": "2712 Broadway St",
+      "address": "227 Nguyen Van Cu Street",
       "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
-    },
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+      "city": "Ho Chi Minh City",
+      "countryCode": "VN",
+      "region": "District 5"
+    }
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
+      "name": "Viettel Group",
+      "position": "AI Engineer",
+      "url": "https://viettel.com.vn/en/",
+      "startDate": "2023-04-01",
+      "endDate": "Present",
       "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
       "highlights": ["Relativity"]
     }
   ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
+      "institution": "High School for The Gifted, VNUHCM",
+      "location": "Ho Chi Minh, Vietnam",
+      "url": "https://ptnk.edu.vn/",
+      "studyType": "High School",
+      "startDate": "2017-08-20",
+      "endDate": "2020-05-31",
+      "score": "9.1/10"
+    },
+    {
+      "institution": "University of Science, VNUHCM",
+      "location": "Ho Chi Minh, Vietnam",
+      "url": "https://en.hcmus.edu.vn/",
+      "area": "Computer Science",
+      "studyType": "Undergraduate",
+      "startDate": "2020-09-01",
+      "endDate": "2024-10-01",
       "score": "10",
-      "courses": ["Theory of Relativity"]
+      "courses": ["Artificial Intelligence", "Machine Learning", "Computer Vision", "Natural Language Processing"]
     }
   ],
   "awards": [
@@ -69,46 +59,18 @@
   ],
   "certificates": [
     {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
-    },
-    {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
-    },
-    {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
-    },
-    {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
-    },
-    {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
-    },
-    {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
+      "name": "TensorFlow Developer Cert.",
+      "date": "July 02, 2023",
+      "issuer": "TensorFlow",
+      "url": "https://www.credential.net/255676a7-c2ee-4964-ae12-22f79ab81a85",
       "icon": "fa-solid fa-clipboard-check"
+    },
+    {
+      "name": "Deep Learning",
+      "date": "June 20, 2022 ",
+      "issuer": "Coursera",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/U6TGTBBAKBRS",
+      "icon": "fa-solid fa-tag"
     }
   ],
   "publications": [

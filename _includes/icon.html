@@ -1,0 +1,6 @@
+{%- capture path -%}
+{{ site.baseurl }}/assets/images/emoji/{{ include.name }}.png
+{%- endcapture -%}
+
+<!-- set font size for the html element -->
+<img alt="Icon" src="{{ path }}" class="icon" width="20px" height="20px" style='display:inline;' />

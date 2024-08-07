@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>Bachelor</a> @ The University of Science, VNU-HCM.
+subtitle: <a href='#'>Undergraduate</a> @ The University of Science, VNU-HCM.
 
 # profile:
 #   align: right
@@ -20,7 +20,7 @@ social: true # includes social icons at the bottom of the page
 
 <!-- I am a fourth-year undergraduate student at [The University of Science], Viet Nam National University Ho Chi Minh City, majoring in Computer Science. I am going to finish my Bachelor's degree in Computer Science in August 2024 under the supervision of Assoc. Prof. Dinh Dien and Dr. Nguyen Hong Buu Long and get a Bachelor's degree in October 2024. I am also a member of the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/) as a research assistant, where I work on projects related to natural language understanding of Vietnamse language models. -->
 
-I'm a fourth-year Computer Science undergraduate student at [The University of Science, VNU-HCM](https://en.hcmus.edu.vn/). I'll complete my Bachelor's degree in August 2024, supervised by Assoc. Prof. Dinh Dien and Dr. Nguyen Hong Buu Long, and graduate in October 2024. As a research assistant at the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/), I study Vietnamese language models for natural language understanding tasks.
+I'm a fourth-year Computer Science undergraduate student at [The University of Science, VNU-HCM](https://en.hcmus.edu.vn/). I'll complete my Bachelor's degree in August 2024, supervised by [Professor Dien Dinh](https://scholar.google.com/citations?user=5tqOcFMAAAAJ&hl=en) and [Dr. Nguyen Hong Buu Long](https://scholar.google.com/citations?user=jECXavQAAAAJ&hl=en), and graduate in October 2024. As an undergraduate research assistant at the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/), I study Vietnamese language models for natural language understanding tasks.
 
 My research focuses on the application of large language models to traditional NLP tasks and real-world problems, as well as methods for improving their performance. I also collaborate on projects exploring the intersection of computer vision and natural language processing, specifically in the domain of vision-language models.
 

@@ -4,8 +4,8 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 2
-cv_pdf: example_pdf.pdf
-# description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+cv_pdf: tran_minh_nam_cv.pdf
+# description: The CV below is a detailed version of the PDF version. You can download the PDF version [here]({{ page.cv_pdf | relative_url }}).
 author_profile: true
 toc:
   sidebar: left

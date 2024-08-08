@@ -17,13 +17,33 @@
   },
   "work": [
     {
-      "name": "Viettel Group",
-      "position": "AI Engineer",
+      "name": "Viettel Headquarters - Viettel Group",
+      "position": "AI Engineer Internship",
       "url": "https://viettel.com.vn/en/",
-      "startDate": "2023-04-01",
+      "startDate": "2023-04",
+      "endDate": "2023-10",
+      "highlights": ["Supervised by Dr. Nguyen Van Nam to complete a 6-month internship with two projects: solving table-to-text challenge and tackling text-to-SQL problem using LLMs.", "Ranked in the top 5 of the DS/AI group during the second stage of the internship."]
+    },
+    {
+      "name": "Computational Linguistics Center, HCMUS-VNUHCM",
+      "position": "Undergraduate Research Assistant",
+      "startDate": "2022-05",
       "endDate": "Present",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "highlights": ["Worked as a research assistant, assisting with data analysis and data management for text-to-code problems and large language model applications.", "Collaborated with team of researchers, compiled research findings for the team and contributed to project reports and presentations about large language models."]
+    },
+    {
+      "name": "Users and Information Lab, KAIST",
+      "position": "Visiting Research Student ",
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "highlights": ["Engaged in a 2-month KAIST School of Computing Summer Internship program under the supervision of Professor Alice Oh and Ph.D candidate Rifki A. Putri.", "Investigated in adapting the multilingual generative pre-trained language models to Vietnamese downstream tasks via multitask instruction learning."]
+    },
+    {
+      "name": "AI VIET NAM",
+      "position": "AI Research and Development Intern",
+      "startDate": "2022-09",
+      "endDate": "2023-06",
+      "highlights": ["Led a team of six members in a code summarization project for developing a simple but highly interactive Streamlit application to generate docs from Python code.", "Worked in the Daily Math Team, creating math exercises for ML and DL.", "Translated TensorFlow-based project source code into the PyTorch framework to support the AIO2022 community."]
     }
   ],
   "education": [
@@ -50,11 +70,10 @@
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "2nd price in the 4th AI Challenge Ho Chi Minh City 2023",
+      "date": "2023-10-16",
+      "awarder": "Center of Science and Technology Development for Youth",
+      "summary": "Worked in conjunction with a team named “Again,” consisting of four members and implemented an image-text matching pipeline for the efficient retrieval of images from a vast database of 2 million photos using text descriptions."
     }
   ],
   "certificates": [
@@ -89,21 +108,6 @@
       "summary": "This paper proposes a novel methodology for generating comprehensive descriptions of traffic scenarios combining a vision-language model (VLM) with rule-based refinements to capture pertinently pedestrian vehicle and environment factor."
     }
   ],
-  "skills": [
-    {
-      "name": "Physics",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
-    }
-  ],
   "languages": [
     {
       "language": "🇻🇳 Vietnamese",
@@ -114,43 +118,6 @@
       "language": "🇬🇧 English",
       "fluency": "IELTS 7.0, TOEIC (L&R) 915",
       "icon": ""
-    }
-  ],
-  "interests": [
-    {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
-      "url": "https://aclanthology.org/2024.findings-naacl.261/",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
-    }
-  ],
-  "references": [
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    },
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    }
-  ],
-  "projects": [
-    {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
     }
   ]
 }

@@ -22,7 +22,13 @@ social: true # includes social icons at the bottom of the page
 
 I'm a fourth-year Computer Science undergraduate student at [The University of Science, VNU-HCM](https://en.hcmus.edu.vn/). I'll complete my Bachelor's degree in August 2024, supervised by [Professor Dien Dinh](https://scholar.google.com/citations?user=5tqOcFMAAAAJ&hl=en) and [Dr. Nguyen Hong Buu Long](https://scholar.google.com/citations?user=jECXavQAAAAJ&hl=en), and graduate in October 2024. As an undergraduate research assistant at the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/), I study Vietnamese language models for natural language understanding tasks.
 
-My research focuses on the application of large language models to traditional NLP tasks and real-world problems, as well as methods for improving their performance. I also collaborate on projects exploring the intersection of computer vision and natural language processing, specifically in the domain of vision-language models.
+My research directions are natural language processing, focusing on (but not limited to):
+- **Large Language Model**: Natural language understanding, logical reasoning, hallucination of LLMs, their applications in real-world problems, etc.
+- **Vision Language Model**: Multimodal reasoning and understanding.
+- **Training/Learning Methods**: Learning strategies for improving the performance of LLMs and how to make them think like humans.
+
+
+<!-- focuses on the application of large language models to traditional NLP tasks and real-world problems, as well as methods for improving their performance. I also collaborate on projects exploring the intersection of computer vision and natural language processing, specifically in the domain of vision-language models. -->
 
 If you have any questions or want to collaborate, feel free to contact me via [email](mailto:tmnam20@apcs.fitus.edu.vn).
 

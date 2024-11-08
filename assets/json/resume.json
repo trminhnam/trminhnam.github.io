@@ -37,13 +37,6 @@
       "startDate": "2023-06",
       "endDate": "2023-08",
       "highlights": ["Engaged in a 2-month KAIST School of Computing Summer Internship program under the supervision of Professor Alice Oh and Ph.D candidate Rifki A. Putri.", "Investigated in adapting the multilingual generative pre-trained language models to Vietnamese downstream tasks via multitask instruction learning."]
-    },
-    {
-      "name": "AI VIET NAM",
-      "position": "AI Research and Development Intern",
-      "startDate": "2022-09",
-      "endDate": "2023-06",
-      "highlights": ["Led a team of six members in a code summarization project for developing a simple but highly interactive Streamlit application to generate docs from Python code.", "Worked in the Daily Math Team, creating math exercises for ML and DL.", "Translated TensorFlow-based project source code into the PyTorch framework to support the AIO2022 community."]
     }
   ],
   "education": [
@@ -116,7 +109,7 @@
     },
     {
       "language": "🇬🇧 English",
-      "fluency": "IELTS 7.0, TOEIC (L&R) 915",
+      "fluency": "IELTS 7.5 (2024), TOEIC (L&R) 915 (2023)",
       "icon": ""
     }
   ]

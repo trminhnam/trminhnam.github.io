@@ -4,7 +4,7 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Minh Nam
-middle_name: 
+middle_name:
 last_name: TRAN
 email: minhnam.tran820@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -269,6 +269,7 @@ plugins:
   - jekyll-twitter-plugin
   - jemoji
   # - jekyll-diagrams
+  - jekyll-redirect-from
 
 
 # Sitemap settings

@@ -13,9 +13,18 @@ profile:
 #     <p>123 your address street</p>
 #     <p>Your City, State 12345</p>
 
-news: false # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
+announcements:
+  enabled: false # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: false
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
 ---
 
 <!-- I am a fourth-year undergraduate student at [The University of Science], Viet Nam National University Ho Chi Minh City, majoring in Computer Science. I am going to finish my Bachelor's degree in Computer Science in August 2024 under the supervision of Assoc. Prof. Dinh Dien and Dr. Nguyen Hong Buu Long and get a Bachelor's degree in October 2024. I am also a member of the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/) as a research assistant, where I work on projects related to natural language understanding of Vietnamse language models. -->
@@ -24,18 +33,16 @@ social: true # includes social icons at the bottom of the page
 
 I have graduated from [The University of Science, VNU-HCM](https://en.hcmus.edu.vn/), with a Bachelor of Science in Computer Science. I am supervised by [Professor Dien Dinh](https://scholar.google.com/citations?user=5tqOcFMAAAAJ&hl=en) and [Dr. Long HB Nguen](https://scholar.google.com/citations?user=jECXavQAAAAJ&hl=en), where my thesis is titled "Exploring and Improving Language Understanding Abilities of Vietnamese Language Models." Besides that, as an undergraduate research assistant at the [Computational Linguistics Center](https://www.clc.hcmus.edu.vn/), I study Vietnamese language models for natural language understanding tasks.
 
-
 I am interested in Natural Language Processing, including (but not limited to):
+
 - **Language Model-related Problems**: Natural language understanding, logical reasoning, hallucination, knowledge integration, trustworthiness, and robustness.
 - **Applications of Language Models**: Using language models for domain-specific problems, real-world problems, or various NLP downstream tasks, such as information retrieval, question-answering, summarization, and dialogue systems.
 - **Training/Learning Methods**: Learning strategies for improving the performance of LLMs and how to make them think like humans.
 - **Vision Language Model**: Multimodal reasoning and understanding.
 
-
 <!-- focuses on the application of large language models to traditional NLP tasks and real-world problems, as well as methods for improving their performance. I also collaborate on projects exploring the intersection of computer vision and natural language processing, specifically in the domain of vision-language models. -->
 
 If you have any questions or want to collaborate, feel free to contact me via [email](mailto:minhnam.tran820@gmail.com).
-
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder. -->
 

@@ -1,0 +1,67 @@
+name: Integration tests
+
+# Template-maintenance workflow: it tests the al-folio demo content and `/al-folio`
+# baseurl, which this personal site doesn't use. Kept for manual runs only.
+on:
+  workflow_dispatch:
+
+jobs:
+  comments-integration-tests:
+    # Upstream-only: this checks the starter's own invariants (the thin-starter
+    # style contract, demo content). It must not run on sites created from the
+    # template, where local _layouts/_includes/_sass overrides are supported.
+    if: github.repository == 'alshedivat/al-folio'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+
+      - name: Setup Ruby 💎
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.5"
+          bundler-cache: true
+
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Setup Node 🧰
+        uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install JS deps 📦
+        run: npm ci
+
+      - name: Run style contract lint 🧷
+        run: npm run lint:style-contract
+
+      - name: Install build prerequisites 🔧
+        run: |
+          sudo apt-get update && sudo apt-get install -y imagemagick
+          pip3 install --upgrade nbconvert
+
+      - name: Run comments integration test 🧪
+        run: bash test/integration_comments.sh
+
+      - name: Run plugin toggle integration test 🔌
+        run: bash test/integration_plugin_toggles.sh
+
+      - name: Run distill integration test 📄
+        run: bash test/integration_distill.sh
+
+      - name: Run bootstrap compatibility integration test 🧩
+        run: bash test/integration_bootstrap_compat.sh
+
+      - name: Run upgrade CLI integration test ⬆️
+        run: bash test/integration_upgrade_cli.sh
+
+      - name: Run CSS minify integration test 🎨
+        run: bash test/integration_css_minify.sh
+
+      - name: Run new plugin integration checks 🧩
+        run: bash test/integration_new_plugins.sh

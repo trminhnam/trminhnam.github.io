@@ -45,8 +45,6 @@ redirect: /notes
     }
 </style>
 
-
-
 <!-- ---
 layout: page
 title: Notes/Blogs

@@ -11,10 +11,37 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!figure) {
             return;
         }
+        var layout = figure.layout;
+        if (element.clientWidth < 560) {
+            layout = narrowLayout(figure.data, layout);
+        }
         element.innerHTML = '';
-        Plotly.newPlot(element, figure.data, figure.layout, {
+        Plotly.newPlot(element, figure.data, layout, {
             responsive: true,
             displayModeBar: false,
         });
     });
 });
+
+// On phones, the per-column legends (legend, legend2, ...) overlap each other and
+// fixed horizontal tick labels run together. Merge the legends into one that wraps
+// above the plot, and let Plotly tilt tick labels that do not fit.
+function narrowLayout(data, layout) {
+    var narrow = JSON.parse(JSON.stringify(layout));
+    var legendKeys = Object.keys(narrow).filter(function (key) { return /^legend\d+$/.test(key); });
+    if (legendKeys.length) {
+        data.forEach(function (trace) { delete trace.legend; });
+        legendKeys.forEach(function (key) { delete narrow[key]; });
+        narrow.legend = Object.assign({}, narrow.legend, {
+            orientation: 'h', x: 0.5, xanchor: 'center', y: 1.02, yanchor: 'bottom', font: { size: 11 },
+        });
+        narrow.margin = Object.assign({}, narrow.margin, { t: 16 });
+    }
+    Object.keys(narrow).forEach(function (key) {
+        if (/^xaxis\d*$/.test(key)) {
+            delete narrow[key].tickangle;
+            narrow[key].tickfont = Object.assign({ size: 11 }, narrow[key].tickfont);
+        }
+    });
+    return narrow;
+}

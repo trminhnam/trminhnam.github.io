@@ -998,11 +998,110 @@ a:focus {
   background: var(--mark);
 }
 
-/* On small screens the More Works button moves to the bottom-right corner,
-   so lift the scroll-to-top button above it. */
+/* On small screens, keep More Works at the top-right of the page, opposite the
+   Home button, instead of the template's floating bottom-right position, where
+   it covered the content. It scrolls away with the page, like Home. */
+@media screen and (max-width: 768px) {
+  .more-works-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    bottom: auto;
+  }
+
+  .more-works-dropdown {
+    top: calc(100% + 0.5rem);
+    bottom: auto;
+    right: 0;
+    width: calc(100vw - 2rem);
+  }
+}
+
+/* Home button: top-left, styled like the More Works button on the right */
+.home-btn {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--background-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.home-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+/* On small screens it sits at the top of the page and scrolls away with it,
+   so move the title down below it */
+@media screen and (max-width: 768px) {
+  .home-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  #main-content > .hero:first-child {
+    padding-top: 3rem;
+  }
+}
+
+@media print {
+  .home-btn {
+    display: none;
+  }
+}
+
+/* Figures that are too small to read on a phone open full size when tapped */
+.figure-link {
+  display: block;
+}
+
+.zoom-hint {
+  display: none;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .zoom-hint {
+    display: block;
+  }
+}
+
+/* Justified text leaves wide gaps between words in a narrow column */
+@media screen and (max-width: 768px) {
+  .figure-caption {
+    text-align: left;
+  }
+}
+
+/* A smaller scroll-to-top button, closer to the corner, covers less text on phones */
 @media screen and (max-width: 768px) {
   .scroll-to-top {
-    bottom: 5.5rem;
+    width: 40px;
+    height: 40px;
     right: 1rem;
+    bottom: 1rem;
+    font-size: 1rem;
   }
 }

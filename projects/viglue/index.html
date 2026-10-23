@@ -121,6 +121,12 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <!-- Home: back to the personal website -->
+  <a class="home-btn" href="https://trminhnam.github.io/" title="Back to Minh-Nam Tran's website">
+    <i class="fas fa-home"></i>
+    Home
+  </a>
+
   <!-- More Works dropdown: the authors' other papers, newest first -->
   <div class="more-works-container">
     <button class="more-works-btn" onclick="toggleMoreWorks()" title="More works by Minh-Nam Tran">
@@ -402,9 +408,12 @@ cola = load_dataset("tmnam20/ViGLUE", "cola")</code></pre>
       <div class="result-block">
         <h3 class="title is-5">VNRTE construction pipeline</h3>
         <div class="figure-card">
-          <img src="static/images/vnrte_pipeline.png" loading="lazy"
-               alt="VNRTE pipeline: crawl and preprocess news articles, generate entailment sentences with a GPT model and filter them by semantic similarity, and find non-entailment sentences by semantic similarity search.">
+          <a class="figure-link" href="static/images/vnrte_pipeline.png" target="_blank">
+            <img src="static/images/vnrte_pipeline.png" loading="lazy"
+                 alt="VNRTE pipeline: crawl and preprocess news articles, generate entailment sentences with a GPT model and filter them by semantic similarity, and find non-entailment sentences by semantic similarity search.">
+          </a>
         </div>
+        <p class="zoom-hint">Tap the figure to open it full size.</p>
         <div class="content">
           <ul>
             <li><b>Entailment:</b> a GPT model rewrites an article's abstract sentence. Pairs with a cosine similarity below 0.9 are rewritten again, for up to four rounds, and then removed.</li>
@@ -470,9 +479,12 @@ cola = load_dataset("tmnam20/ViGLUE", "cola")</code></pre>
         </div>
         <div class="tab-panel" id="fewshot-phogpt" role="tabpanel">
           <div class="figure-card">
-            <img src="static/images/bloom7b1_vs_phogpt7b5_updated.svg" loading="lazy"
-                 alt="BLOOM-7B1 and PhoGPT-7B5 scores on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+            <a class="figure-link" href="static/images/bloom7b1_vs_phogpt7b5_updated.svg" target="_blank">
+              <img src="static/images/bloom7b1_vs_phogpt7b5_updated.svg" loading="lazy"
+                   alt="BLOOM-7B1 and PhoGPT-7B5 scores on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+            </a>
           </div>
+          <p class="zoom-hint">Tap the figure to open it full size.</p>
           <p class="small-caption">Scores &times; 100. All tasks use accuracy except CoLA (MCC).</p>
           <div class="content">
             <ul>
@@ -484,9 +496,12 @@ cola = load_dataset("tmnam20/ViGLUE", "cola")</code></pre>
         </div>
         <div class="tab-panel" id="fewshot-bloom" role="tabpanel" hidden>
           <div class="figure-card">
-            <img src="static/images/bloom.all_shots.v2.svg" loading="lazy"
-                 alt="Few-shot scores of six BLOOM models on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+            <a class="figure-link" href="static/images/bloom.all_shots.v2.svg" target="_blank">
+              <img src="static/images/bloom.all_shots.v2.svg" loading="lazy"
+                   alt="Few-shot scores of six BLOOM models on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+            </a>
           </div>
+          <p class="zoom-hint">Tap the figure to open it full size.</p>
           <p class="small-caption">Stars, plus signs, circles, and diamonds mark <i>k</i> = 0, 1, 2, and 4.</p>
           <div class="content">
             <ul>

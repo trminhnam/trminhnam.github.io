@@ -1092,7 +1092,6 @@ a:focus {
     bottom: auto;
     right: 0;
     width: calc(100vw - 2rem);
-    max-width: none;
   }
 }
 
@@ -1187,14 +1186,5 @@ a:focus {
     right: 1rem;
     bottom: 1rem;
     font-size: 1rem;
-  }
-}
-
-/* Floating corner buttons need room beside the content column (960px wide), or
-   they cover it while scrolling. Below 1360px, keep them at the top of the page. */
-@media screen and (min-width: 769px) and (max-width: 1359px) {
-  .home-btn,
-  .more-works-container {
-    position: absolute;
   }
 }

@@ -93,6 +93,7 @@ Each project website is its own repository, added here as a git submodule under 
 | Route                  | Repository                                                                                             |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ |
 | `/projects/graphniah/` | [trminhnam/GraphNIAH-project-website](https://github.com/trminhnam/GraphNIAH-project-website) (`main`) |
+| `/projects/viglue/`    | [trminhnam/ViGLUE-project-website](https://github.com/trminhnam/ViGLUE-project-website) (`main`)       |
 
 Edit a project website in its own repository, not in `projects/`. Each project repository publishes itself: its `.github/workflows/publish.yml` copies its files into this site's published `gh-pages` branch under `projects/<name>/` after every push, in seconds and without rebuilding this site. This site's own **Deploy site** workflow fetches the latest commit of each project's branch too, so a full deploy publishes the same version. To see the latest version locally, run `make update-projects`; committing the updated submodule is optional.
 

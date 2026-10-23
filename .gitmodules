@@ -2,3 +2,7 @@
 	path = projects/graphniah
 	url = git@github.com:trminhnam/GraphNIAH-project-website.git
 	branch = main
+[submodule "projects/viglue"]
+	path = projects/viglue
+	url = git@github.com:trminhnam/ViGLUE-project-website.git
+	branch = main

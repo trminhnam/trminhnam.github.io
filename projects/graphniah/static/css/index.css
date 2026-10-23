@@ -997,3 +997,12 @@ a:focus {
   border-radius: 2px;
   background: var(--mark);
 }
+
+/* On small screens the More Works button moves to the bottom-right corner,
+   so lift the scroll-to-top button above it. */
+@media screen and (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 5.5rem;
+    right: 1rem;
+  }
+}

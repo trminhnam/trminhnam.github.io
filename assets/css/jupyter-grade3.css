@@ -299,6 +299,15 @@ div#notebook {
   line-height: inherit;
 }
 
+.dropdown-header {
+  font-family: sans-serif !important;
+  font-size: 13pt !important;
+  color: #ff7823 !important;
+  border-bottom: none !important;
+  padding: 0px !important;
+  margin: 6px 6px 0px !important;
+}
+
 button.close {
   border: 0px none;
   font-family: sans-serif;

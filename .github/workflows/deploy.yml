@@ -15,6 +15,8 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
+      - ".gitmodules"
+      - "project/**"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -42,6 +44,8 @@ on:
       - "**.yml"
       - "Gemfile"
       - "Gemfile.lock"
+      - ".gitmodules"
+      - "project/**"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -56,6 +60,9 @@ on:
       - "!docs/INSTALL.md"
       - "!README.md"
   workflow_dispatch:
+  # sent by a project website repo after each push, to republish it (see "Project websites" in README.md)
+  repository_dispatch:
+    types: [project-site-updated]
 
 permissions:
   contents: write
@@ -67,6 +74,14 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
+      - name: Fetch latest project websites 📦
+        # The project websites under project/ are private submodules, so this needs a token that can read them.
+        # --remote takes each one's latest commit on its branch (.gitmodules), not the commit recorded here.
+        env:
+          PROJECT_SITES_TOKEN: ${{ secrets.PROJECT_SITES_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${PROJECT_SITES_TOKEN}@github.com/".insteadOf "git@github.com:"
+          git submodule update --init --remote
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:

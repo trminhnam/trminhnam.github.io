@@ -1,21 +1,34 @@
 {
   "basics": {
     "name": "Minh-Nam Tran",
-    "label": "Undergraduate Student & Research Assistant",
+    "label": "Graduate Researcher",
     "image": "",
-    "email": "minhnam.tran820@gmail.com",
-    "phone": "(038) 256 3952",
     "url": "https://trminhnam.github.io/",
-    "summary": "A final-year undergraduate student at University of Science - VNUHCM and research assistant at Computational Linguistic Center. I am interested in studying Large Language Models, Large Vision Language Models and their capabilities in natural language understanding.",
+    "summary": "A Ph.D. student in Computer Science at Purdue University and a graduate research assistant in Saparov's Lab. I am interested in Natural Language Processing, especially reasoning in language models (including graph reasoning), multi-agent systems, and applications of large language and vision-language models.",
     "location": {
-      "address": "227 Nguyen Van Cu Street",
-      "postalCode": "CA 94115",
-      "city": "Ho Chi Minh City",
-      "countryCode": "VN",
-      "region": "District 5"
+      "city": "West Lafayette",
+      "region": "IN, USA",
+      "countryCode": "US"
     }
   },
   "work": [
+    {
+      "name": "Saparov's Lab, Purdue University",
+      "position": "Graduate Researcher",
+      "url": "https://asaparov.org/",
+      "startDate": "2025-08",
+      "highlights": [
+        "Ph.D. research under the supervision of Prof. Abulhair Saparov on reasoning in language models (including graph reasoning), multi-agent systems, and applications of language models; graduate research assistant during the first year (2025–2026).",
+        "Working on two research projects: \"Multi-agent code reasoning with Vision Language Models for graphic design editing\" and \"Verifying Language Model's outputs in scientific and technical analysis using multi-agent system.\""
+      ]
+    },
+    {
+      "name": "Department of Computer Science, Purdue University",
+      "position": "Graduate Teaching Assistant",
+      "url": "https://www.cs.purdue.edu/",
+      "startDate": "2026-08",
+      "highlights": ["Teaching assistant for Introduction to Data Science (CS 24200/STAT 24200), Fall 2026."]
+    },
     {
       "name": "Viettel Headquarters - Viettel Group",
       "position": "AI Engineer Internship",
@@ -31,7 +44,7 @@
       "name": "Computational Linguistics Center, HCMUS-VNUHCM",
       "position": "Undergraduate Research Assistant",
       "startDate": "2022-05",
-      "endDate": "Present",
+      "endDate": "2025-08",
       "highlights": [
         "Worked as a research assistant, assisting with data analysis and data management for text-to-code problems and large language model applications.",
         "Collaborated with team of researchers, compiled research findings for the team and contributed to project reports and presentations about large language models."
@@ -68,6 +81,16 @@
       "endDate": "2024-10-01",
       "score": "3.98/4.00",
       "courses": ["Artificial Intelligence", "Machine Learning", "Computer Vision", "Natural Language Processing"]
+    },
+    {
+      "institution": "Purdue University",
+      "location": "West Lafayette, IN, USA",
+      "url": "https://www.cs.purdue.edu/",
+      "area": "Computer Science",
+      "studyType": "Ph.D.",
+      "startDate": "2025-08",
+      "score": "4.00/4.00",
+      "courses": ["Algorithm Design, Analysis, and Implementation", "Data Communication and Computer Networks", "Foundations of Deep Learning"]
     }
   ],
   "awards": [

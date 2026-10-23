@@ -1,16 +1,12 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
-description: Course materials, schedules, and resources for classes taught.
+title: Teaching
 nav: true
-nav_order: 6
-calendar: true
-published: false
+nav_order: 3
+published: true # delete this line once you've added your first entry
 ---
 
-This page displays a collection of courses with detailed schedules, materials, and resources. You can organize your courses by years, terms, or topics.
-
-{% include calendar.liquid calendar_id='test@gmail.com' timezone='Asia/Shanghai' %}
-
-{% include courses.liquid %}
+- **Introduction to Data Science** (CS 24200/STAT 24200)
+  - Purdue University
+  - Fall 2026 (TA)

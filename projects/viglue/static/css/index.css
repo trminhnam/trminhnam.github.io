@@ -1075,3 +1075,12 @@ a:focus {
   padding: 0.4rem 0.75rem;
   font-size: 0.8rem;
 }
+
+/* On small screens the More Works button moves to the bottom-right corner,
+   so lift the scroll-to-top button above it. */
+@media screen and (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 5.5rem;
+    right: 1rem;
+  }
+}

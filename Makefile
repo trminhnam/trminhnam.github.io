@@ -22,9 +22,9 @@ serve: ## Run the site locally at http://localhost:4000/ (auto-rebuilds on save)
 build: ## Build the site into _site/
 	bundle exec jekyll build
 
-update-projects: ## Pull the latest version of every project website under project/
+update-projects: ## Pull the latest version of every project website under projects/
 	git submodule update --init --remote
-	@git status --short project
+	@git status --short projects
 
 check: ## Check formatting and that the site builds (the same checks CI runs)
 	npx prettier . --check

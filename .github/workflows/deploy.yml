@@ -16,7 +16,7 @@ on:
       - "Gemfile"
       - "Gemfile.lock"
       - ".gitmodules"
-      - "project/**"
+      - "projects/**"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -45,7 +45,7 @@ on:
       - "Gemfile"
       - "Gemfile.lock"
       - ".gitmodules"
-      - "project/**"
+      - "projects/**"
       - "!.github/workflows/axe.yml"
       - "!.github/workflows/broken-links.yml"
       - "!.github/workflows/deploy-docker-tag.yml"
@@ -72,7 +72,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v7
       - name: Fetch latest project websites 📦
-        # The project websites under project/ are private submodules, so this needs a token that can read them.
+        # The project websites under projects/ are private submodules, so this needs a token that can read them.
         # --remote takes each one's latest commit on its branch (.gitmodules), not the commit recorded here, so a
         # full deploy republishes the same version that each project repo publishes on its own (see README.md).
         env:

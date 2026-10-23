@@ -1,4 +1,4 @@
 [submodule "project/graphniah"]
-	path = project/graphniah
+	path = projects/graphniah
 	url = git@github.com:trminhnam/GraphNIAH-project-website.git
 	branch = main

@@ -245,7 +245,7 @@ exclude:
   - gems/
   - migrations/
   - old/
-  - project/*/README.md # project sites under project/ are git submodules, published as-is
+  - projects/*/README.md # project sites under projects/ are git submodules, published as-is
   - requirements.txt
   - test/
   - vendor

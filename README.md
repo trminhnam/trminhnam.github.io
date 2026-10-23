@@ -13,7 +13,7 @@ Run `make` to list these.
 | `make check`            | Run the formatting check and a test build (the same checks GitHub runs)        |
 | `make build`            | Build the site into `_site/`                                                   |
 | `make clean`            | Delete build output, caches, and `.DS_Store` files                             |
-| `make update-projects`  | Pull the latest version of each project website in `project/`                  |
+| `make update-projects`  | Pull the latest version of each project website in `projects/`                 |
 | `make install`          | Install the Ruby and JavaScript dependencies, and fetch the project websites   |
 | `make distclean`        | `clean`, plus delete the installed dependencies (run `make install` afterward) |
 
@@ -88,28 +88,28 @@ Pages with `published: false` at the top (blog, projects, and the template's dem
 
 ## Project websites
 
-Each project website is its own repository, added here as a git submodule under `project/` and published unchanged (its scripts are not minified) at `/project/<name>/`:
+Each project website is its own repository, added here as a git submodule under `projects/` and published unchanged (its scripts are not minified) at `/projects/<name>/`:
 
-| Route                 | Repository                                                                                             |
-| --------------------- | ------------------------------------------------------------------------------------------------------ |
-| `/project/graphniah/` | [trminhnam/GraphNIAH-project-website](https://github.com/trminhnam/GraphNIAH-project-website) (`main`) |
+| Route                  | Repository                                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| `/projects/graphniah/` | [trminhnam/GraphNIAH-project-website](https://github.com/trminhnam/GraphNIAH-project-website) (`main`) |
 
-Edit a project website in its own repository, not in `project/`. Each project repository publishes itself: its `.github/workflows/publish.yml` copies its files into this site's published `gh-pages` branch under `project/<name>/` after every push, in seconds and without rebuilding this site. This site's own **Deploy site** workflow fetches the latest commit of each project's branch too, so a full deploy publishes the same version. To see the latest version locally, run `make update-projects`; committing the updated submodule is optional.
+Edit a project website in its own repository, not in `projects/`. Each project repository publishes itself: its `.github/workflows/publish.yml` copies its files into this site's published `gh-pages` branch under `projects/<name>/` after every push, in seconds and without rebuilding this site. This site's own **Deploy site** workflow fetches the latest commit of each project's branch too, so a full deploy publishes the same version. To see the latest version locally, run `make update-projects`; committing the updated submodule is optional.
 
 Because the project repositories are private, both workflows need a token:
 
 1. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with access to this repository and every project website repository, with the **Contents: Read and write** permission.
 2. Add it as an Actions secret named `PROJECT_SITES_TOKEN` in this repository (Settings → Secrets and variables → Actions), and in each project website repository.
 
-For a new project website, copy [`project/graphniah/.github/workflows/publish.yml`](https://github.com/trminhnam/GraphNIAH-project-website/blob/main/.github/workflows/publish.yml) into its repository and change `target-folder` to `project/<name>`.
+For a new project website, copy [`projects/graphniah/.github/workflows/publish.yml`](https://github.com/trminhnam/GraphNIAH-project-website/blob/main/.github/workflows/publish.yml) into its repository and change `target-folder` to `projects/<name>`.
 
 To add another project website:
 
 ```bash
-git submodule add -b main git@github.com:trminhnam/<repo>.git project/<name>
+git submodule add -b main git@github.com:trminhnam/<repo>.git projects/<name>
 ```
 
-Its links to its own files must be relative (`static/...`, not `/static/...`), since it is served from `/project/<name>/`.
+Its links to its own files must be relative (`static/...`, not `/static/...`), since it is served from `/projects/<name>/`.
 
 ## Deployment
 

@@ -8,4 +8,4 @@ _posts/2015-10-20-math.md
 _data/citations.yml
 old/
 # project websites are git submodules with their own formatting
-project/
+projects/

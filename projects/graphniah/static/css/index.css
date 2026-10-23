@@ -1014,6 +1014,7 @@ a:focus {
     bottom: auto;
     right: 0;
     width: calc(100vw - 2rem);
+    max-width: none;
   }
 }
 
@@ -1180,5 +1181,16 @@ a:focus {
 
   .plot-legend-swatch {
     width: 1.1rem;
+  }
+}
+
+/* Floating corner buttons need room beside the content, or they cover it while
+   scrolling. The widest content is the row of three small result figures (up to
+   1152px), and More Works takes 200px with its margin, so they float only from
+   1600px; below that, keep them at the top of the page. */
+@media screen and (min-width: 769px) and (max-width: 1599px) {
+  .home-btn,
+  .more-works-container {
+    position: absolute;
   }
 }

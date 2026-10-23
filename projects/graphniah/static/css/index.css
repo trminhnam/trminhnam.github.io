@@ -812,10 +812,6 @@ a:focus {
   background: #eff6ff;
 }
 
-.task-list .column {
-  text-align: center;
-}
-
 .step {
   display: flex;
   gap: 1rem;

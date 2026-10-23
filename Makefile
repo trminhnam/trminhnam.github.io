@@ -38,6 +38,8 @@ push: check ## Check, then commit everything and push to GitHub
 		git status --short; \
 		git commit -q -m "$(m)" && echo "Committed: $(m)"; \
 	fi
+	@# GitHub bots also commit (citation and table-of-contents updates), so take theirs first
+	git pull --rebase origin $(BRANCH)
 	git push origin $(BRANCH)
 
 clean: ## Delete build output, caches and .DS_Store files

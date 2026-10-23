@@ -94,32 +94,14 @@ Each project website is its own repository, added here as a git submodule under 
 | --------------------- | ------------------------------------------------------------------------------------------------------ |
 | `/project/graphniah/` | [trminhnam/GraphNIAH-project-website](https://github.com/trminhnam/GraphNIAH-project-website) (`main`) |
 
-Edit a project website in its own repository, not in `project/`. When the site is deployed, the **Deploy site** workflow fetches the latest commit of each project's branch, so a deploy always publishes the current project website. To see the latest version locally, run `make update-projects`; committing the updated submodule is optional.
+Edit a project website in its own repository, not in `project/`. Each project repository publishes itself: its `.github/workflows/publish.yml` copies its files into this site's published `gh-pages` branch under `project/<name>/` after every push, in seconds and without rebuilding this site. This site's own **Deploy site** workflow fetches the latest commit of each project's branch too, so a full deploy publishes the same version. To see the latest version locally, run `make update-projects`; committing the updated submodule is optional.
 
-Because the project repositories are private, the deploy needs a token:
+Because the project repositories are private, both workflows need a token:
 
 1. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with access to this repository and every project website repository, with the **Contents: Read and write** permission.
 2. Add it as an Actions secret named `PROJECT_SITES_TOKEN` in this repository (Settings → Secrets and variables → Actions), and in each project website repository.
 
-To republish this site automatically whenever a project website changes, add this workflow to the project website repository as `.github/workflows/update-personal-site.yml`:
-
-```yaml
-name: Update personal website
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-jobs:
-  notify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ask trminhnam.github.io to redeploy
-        env:
-          GH_TOKEN: ${{ secrets.PROJECT_SITES_TOKEN }}
-        run: gh api repos/trminhnam/trminhnam.github.io/dispatches -f event_type=project-site-updated
-```
+For a new project website, copy [`project/graphniah/.github/workflows/publish.yml`](https://github.com/trminhnam/GraphNIAH-project-website/blob/main/.github/workflows/publish.yml) into its repository and change `target-folder` to `project/<name>`.
 
 To add another project website:
 

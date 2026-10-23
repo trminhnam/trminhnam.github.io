@@ -60,9 +60,6 @@ on:
       - "!docs/INSTALL.md"
       - "!README.md"
   workflow_dispatch:
-  # sent by a project website repo after each push, to republish it (see "Project websites" in README.md)
-  repository_dispatch:
-    types: [project-site-updated]
 
 permissions:
   contents: write
@@ -76,7 +73,8 @@ jobs:
         uses: actions/checkout@v7
       - name: Fetch latest project websites 📦
         # The project websites under project/ are private submodules, so this needs a token that can read them.
-        # --remote takes each one's latest commit on its branch (.gitmodules), not the commit recorded here.
+        # --remote takes each one's latest commit on its branch (.gitmodules), not the commit recorded here, so a
+        # full deploy republishes the same version that each project repo publishes on its own (see README.md).
         env:
           PROJECT_SITES_TOKEN: ${{ secrets.PROJECT_SITES_TOKEN }}
         run: |

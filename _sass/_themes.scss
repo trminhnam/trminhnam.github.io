@@ -208,3 +208,10 @@ html[data-theme-setting="light"] {
 #light-toggle:hover .fa-half-sun-moon::after {
   color: var(--global-theme-color);
 }
+
+// Site override: line the GitHub icon on project cards up with the card text.
+// The icon sits in a Bootstrap `.row`, whose negative side margins pull it 15px to the left.
+.projects .card-body .row {
+  margin-left: 0;
+  margin-right: 0;
+}

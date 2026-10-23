@@ -312,7 +312,7 @@ defaults:
       path: "assets"
     values:
       sitemap: false
-  # the template's example posts, books and teachings are kept for reference but not published;
+  # the template's example posts, books, teachings and projects are kept for reference but not published;
   # remove these entries (or set `published: true` in a file) to publish your own
   - scope:
       path: ""
@@ -327,6 +327,11 @@ defaults:
   - scope:
       path: ""
       type: teachings
+    values:
+      published: false
+  - scope:
+      path: ""
+      type: projects
     values:
       published: false
 

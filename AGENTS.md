@@ -20,6 +20,7 @@ Find your change on the left; edit only what is on the right.
 | Feature behavior (search, math, charts, comments, cookies, icons, CV, distill, analytics, images, newsletter, citations) | that feature's gem — see [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md)                                           |
 | Component/unit test for gem-owned behavior                                                                               | the owning gem, not here                                                                                      |
 | A feature with no existing owner                                                                                         | open a plugin proposal issue first, then a standalone plugin repo                                             |
+| A project website (`/projects/<name>/`)                                                                                  | its own repo, added here as a submodule — see [Add a project website](#add-a-project-website)                 |
 
 [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) is the authoritative area-to-gem table. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) explains how the pieces connect.
 
@@ -72,6 +73,16 @@ docker compose down
 ```
 
 All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the ones your change touches. Docker note: v1 uses `/srv/jekyll/bin/entry_point.sh` and serves from container-local `/tmp/_site` to avoid host bind-mount write deadlocks.
+
+## Add a project website
+
+Each project page is its own repo, served at `/projects/<name>/` ([details](README.md#project-websites)).
+
+1. **Project repo:** copy `projects/graphniah/.github/workflows/publish.yml` and set `target-folder: projects/<name>`. Keep asset links relative (`static/...`).
+2. **Token:** give the `PROJECT_SITES_TOKEN` fine-grained token access to the new repo, and add it there as an Actions secret. Without access, the whole site deploy fails.
+3. **Publish:** push the project repo to `main`.
+4. **This repo:** `git submodule add -b main git@github.com:trminhnam/<repo>.git projects/<name>`, add a row to the README table, and add `website = {https://trminhnam.github.io/projects/<name>/}` to the paper's entry in `_bibliography/papers.bib`.
+5. **Ship:** `make check`, then commit and push.
 
 ## Before you open a PR
 

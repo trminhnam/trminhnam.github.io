@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models">
+  <meta name="description" content="ViGLUE is a Vietnamese general language understanding benchmark with twelve tasks, built by translating GLUE, constructing new corpora from Vietnamese news, and collecting existing Vietnamese datasets.">
+  <meta name="keywords" content="ViGLUE, Vietnamese, natural language understanding, benchmark, GLUE, language models, few-shot learning, NAACL 2024">
+  <meta name="author" content="Minh-Nam Tran, Phu-Vinh Nguyen, Long Nguyen, Dien Dinh">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ViGLUE">
+  <meta property="og:title" content="ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models">
+  <meta property="og:description" content="A twelve-task Vietnamese natural language understanding benchmark, with fine-tuned baselines and a few-shot study of Vietnamese LLMs. Findings of NAACL 2024.">
+  <meta property="og:url" content="https://trminhnam.github.io/projects/viglue/">
+  <meta property="og:image" content="https://trminhnam.github.io/projects/viglue/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ViGLUE and the VNRTE construction pipeline">
+  <meta property="article:author" content="Minh-Nam Tran">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Vietnamese NLP">
+  <meta property="article:tag" content="benchmark">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models">
+  <meta name="twitter:description" content="A twelve-task Vietnamese natural language understanding benchmark, with fine-tuned baselines and a few-shot study of Vietnamese LLMs. Findings of NAACL 2024.">
+  <meta name="twitter:image" content="https://trminhnam.github.io/projects/viglue/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="ViGLUE and the VNRTE construction pipeline">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models">
+  <meta name="citation_author" content="Tran, Minh-Nam">
+  <meta name="citation_author" content="Nguyen, Phu-Vinh">
+  <meta name="citation_author" content="Nguyen, Long">
+  <meta name="citation_author" content="Dinh, Dien">
+  <meta name="citation_publication_date" content="2024/06">
+  <meta name="citation_conference_title" content="Findings of the Association for Computational Linguistics: NAACL 2024">
+  <meta name="citation_firstpage" content="4174">
+  <meta name="citation_lastpage" content="4189">
+  <meta name="citation_doi" content="10.18653/v1/2024.findings-naacl.261">
+  <meta name="citation_pdf_url" content="https://aclanthology.org/2024.findings-naacl.261.pdf">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://huggingface.co">
+
+  <title>ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ViGLUE: A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models",
+    "description": "A twelve-task Vietnamese natural language understanding benchmark, with fine-tuned baselines and a few-shot study of Vietnamese LLMs.",
+    "author": [
+      {"@type": "Person", "name": "Minh-Nam Tran", "affiliation": {"@type": "Organization", "name": "University of Science, VNU-HCM"}},
+      {"@type": "Person", "name": "Phu-Vinh Nguyen", "affiliation": {"@type": "Organization", "name": "University of Science, VNU-HCM"}},
+      {"@type": "Person", "name": "Long Nguyen", "affiliation": {"@type": "Organization", "name": "University of Science, VNU-HCM"}},
+      {"@type": "Person", "name": "Dien Dinh", "affiliation": {"@type": "Organization", "name": "University of Science, VNU-HCM"}}
+    ],
+    "datePublished": "2024-06",
+    "publisher": {"@type": "Organization", "name": "Association for Computational Linguistics"},
+    "isPartOf": {"@type": "PublicationEvent", "name": "Findings of the Association for Computational Linguistics: NAACL 2024"},
+    "sameAs": "https://doi.org/10.18653/v1/2024.findings-naacl.261",
+    "url": "https://trminhnam.github.io/projects/viglue/",
+    "image": "https://trminhnam.github.io/projects/viglue/static/images/social_preview.png",
+    "keywords": ["Vietnamese", "natural language understanding", "benchmark", "GLUE", "few-shot learning"],
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ViGLUE
+              <span class="publication-subtitle">A Vietnamese General Language Understanding Benchmark and Analysis of Vietnamese Language Models</span></h1>
+            <div class="publication-venue">Findings of NAACL 2024</div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://trminhnam.github.io" target="_blank">Minh-Nam Tran</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=Apc43JQAAAAJ&hl=en" target="_blank">Phu-Vinh Nguyen</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=jECXavQAAAAJ&hl=en" target="_blank">Long Nguyen</a><sup>†</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=WDsuRbwAAAAJ&hl=en" target="_blank">Dien Dinh</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Faculty of Information Technology, University of Science, Ho Chi Minh City, Vietnam<br>
+                Vietnam National University, Ho Chi Minh City, Vietnam</span>
+              <span class="eql-cntrb"><br><sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding author</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://aclanthology.org/2024.findings-naacl.261.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://aclanthology.org/2024.findings-naacl.261/" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-book-open"></i></span>
+                    <span>ACL Anthology</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/trminhnam/ViGLUE" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/tmnam20/ViGLUE" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-quote-right"></i></span>
+                    <span>BibTeX</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TL;DR -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <p class="tldr">
+          <b>ViGLUE</b> is a GLUE-style benchmark for <b>Vietnamese</b> natural language understanding.
+          It has twelve tasks, built by translating GLUE, constructing new corpora from Vietnamese news,
+          and collecting existing Vietnamese datasets. We fine-tune multilingual encoders as baselines and
+          study how Vietnamese LLMs perform with few-shot prompting.
+        </p>
+        <div class="stat-strip">
+          <div class="stat"><span class="stat-value">12</span><span class="stat-label">tasks</span></div>
+          <div class="stat"><span class="stat-value">4</span><span class="stat-label">task groups</span></div>
+          <div class="stat"><span class="stat-value">10+</span><span class="stat-label">domains</span></div>
+          <div class="stat"><span class="stat-value">981k</span><span class="stat-label">training examples</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key findings -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Key Findings</h2>
+      <div class="columns is-multiline">
+        <div class="column is-half">
+          <div class="highlight-card">
+            <p class="finding-stat">94.3</p>
+            <h3>Translation keeps the meaning</h3>
+            <p>Back-translated GLUE sentences have an average semantic similarity of 94.3 to the originals (BLEU 53.5, METEOR 79.4).</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="highlight-card">
+            <p class="finding-stat">7 of 12</p>
+            <h3>XLM-R<sub>large</sub> is the strongest baseline</h3>
+            <p>It is the best fine-tuned model on seven tasks, including both paraphrase tasks, but it falls to the majority baseline on MNLI and CoLA.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="highlight-card">
+            <p class="finding-stat">56.34%</p>
+            <h3>WNLI is still unsolved</h3>
+            <p>No fine-tuned model beats the majority-class baseline on WNLI.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="highlight-card">
+            <p class="finding-stat"><i>k</i> = 0</p>
+            <h3>More examples do not always help</h3>
+            <p>BLOOM and PhoGPT score best with zero-shot prompts on CoLA, MNLI, MRPC, QQP, and WNLI. Only QNLI and VNRTE improve as examples are added.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tasks -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Twelve Tasks</h2>
+      <div class="table-container">
+        <table class="table is-fullwidth is-hoverable task-table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th class="has-text-right">Train</th>
+              <th class="has-text-right">Val.</th>
+              <th class="has-text-right">Test</th>
+              <th>Source</th>
+              <th>Metric</th>
+              <th>Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="group-row"><td colspan="7">Natural language inference</td></tr>
+            <tr><td><b>MNLI</b><span class="task-desc">Entailment, neutral, or contradiction</span></td><td class="has-text-right">392,702</td><td class="has-text-right">9,815</td><td class="has-text-right">9,796</td><td><span class="method translated">Translated</span></td><td>Acc.</td><td>Miscellaneous</td></tr>
+            <tr><td><b>QNLI</b><span class="task-desc">Does the sentence answer the question?</span></td><td class="has-text-right">104,743</td><td class="has-text-right">5,463</td><td class="has-text-right">5,463</td><td><span class="method translated">Translated</span></td><td>Acc.</td><td>Wikipedia</td></tr>
+            <tr><td><b>RTE</b><span class="task-desc">Entailment or not entailment</span></td><td class="has-text-right">2,490</td><td class="has-text-right">277</td><td class="has-text-right">3,000</td><td><span class="method translated">Translated</span></td><td>Acc.</td><td>Miscellaneous</td></tr>
+            <tr><td><b>VNRTE</b><span class="task-desc">Entailment between Vietnamese news sentences</span></td><td class="has-text-right">12,526</td><td class="has-text-right">3,137</td><td class="has-text-right">–</td><td><span class="method constructed">Constructed</span></td><td>Acc.</td><td>News</td></tr>
+            <tr><td><b>WNLI</b><span class="task-desc">Pronoun resolution as entailment</span></td><td class="has-text-right">635</td><td class="has-text-right">71</td><td class="has-text-right">146</td><td><span class="method translated">Translated</span></td><td>Acc.</td><td>Fiction books</td></tr>
+            <tr class="group-row"><td colspan="7">Sentiment analysis</td></tr>
+            <tr><td><b>SST2</b><span class="task-desc">Positive or negative movie review</span></td><td class="has-text-right">67,349</td><td class="has-text-right">872</td><td class="has-text-right">1,821</td><td><span class="method translated">Translated</span></td><td>Acc.</td><td>Movie reviews</td></tr>
+            <tr><td><b>VSFC</b><span class="task-desc">Sentiment of student feedback (3 classes)</span></td><td class="has-text-right">11,426</td><td class="has-text-right">1,538</td><td class="has-text-right">3,166</td><td><span class="method collected">Collected</span></td><td>Acc.</td><td>Student feedback</td></tr>
+            <tr><td><b>VSMEC</b><span class="task-desc">Emotion of social media comments (7 classes)</span></td><td class="has-text-right">5,548</td><td class="has-text-right">686</td><td class="has-text-right">693</td><td><span class="method collected">Collected</span></td><td>Acc.</td><td>Social media</td></tr>
+            <tr class="group-row"><td colspan="7">Similarity and paraphrase</td></tr>
+            <tr><td><b>MRPC</b><span class="task-desc">Are two news sentences paraphrases?</span></td><td class="has-text-right">3,668</td><td class="has-text-right">408</td><td class="has-text-right">1,725</td><td><span class="method translated">Translated</span></td><td>Acc./F1</td><td>News</td></tr>
+            <tr><td><b>QQP</b><span class="task-desc">Are two Quora questions duplicates?</span></td><td class="has-text-right">363,846</td><td class="has-text-right">40,430</td><td class="has-text-right">390,965</td><td><span class="method translated">Translated</span></td><td>Acc./F1</td><td>Quora QA</td></tr>
+            <tr class="group-row"><td colspan="7">Single sentence</td></tr>
+            <tr><td><b>CoLA</b><span class="task-desc">Is the sentence grammatically acceptable?</span></td><td class="has-text-right">8,551</td><td class="has-text-right">1,043</td><td class="has-text-right">1,063</td><td><span class="method translated">Translated</span></td><td>MCC</td><td>Miscellaneous</td></tr>
+            <tr><td><b>VToC</b><span class="task-desc">Topic of a news sentence (15 topics)</span></td><td class="has-text-right">7,293</td><td class="has-text-right">1,831</td><td class="has-text-right">–</td><td><span class="method constructed">Constructed</span></td><td>Acc.</td><td>News</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-caption">MCC: Matthews correlation coefficient. VNRTE and VToC have no test split.</p>
+    </div>
+  </section>
+
+  <!-- Dataset preview: Hugging Face dataset viewer -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Dataset Preview</h2>
+      <p class="section-intro">Pick a task to browse its training split in the Hugging Face dataset viewer.</p>
+      <div class="subset-picker" role="group" aria-label="ViGLUE task">
+        <button type="button" data-subset="cola" class="is-active">CoLA</button>
+        <button type="button" data-subset="mnli">MNLI</button>
+        <button type="button" data-subset="mrpc">MRPC</button>
+        <button type="button" data-subset="qnli">QNLI</button>
+        <button type="button" data-subset="qqp">QQP</button>
+        <button type="button" data-subset="rte">RTE</button>
+        <button type="button" data-subset="sst2">SST2</button>
+        <button type="button" data-subset="vnrte">VNRTE</button>
+        <button type="button" data-subset="vsfc">VSFC</button>
+        <button type="button" data-subset="vsmec">VSMEC</button>
+        <button type="button" data-subset="vtoc">VToC</button>
+        <button type="button" data-subset="wnli">WNLI</button>
+      </div>
+      <div class="viewer-frame">
+        <iframe id="hf-viewer" src="https://huggingface.co/datasets/tmnam20/ViGLUE/embed/viewer/cola/train"
+                title="ViGLUE on the Hugging Face dataset viewer" loading="lazy"></iframe>
+      </div>
+      <div class="code-block">
+        <button class="copy-bibtex-btn copy-code-btn" onclick="copyCode(this)" title="Copy code to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+        <pre class="load-snippet"><code>from datasets import load_dataset
+
+cola = load_dataset("tmnam20/ViGLUE", "cola")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">How ViGLUE Is Built</h2>
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <div class="highlight-card">
+            <div class="card-title"><span class="icon"><i class="fas fa-language"></i></span><h3>Translated <span class="method translated">8 tasks</span></h3></div>
+            <p>Eight GLUE tasks are machine-translated with Google Translate. To check quality, 100 examples per task are translated back to English and compared with the originals by BLEU, METEOR, and semantic similarity.</p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="highlight-card">
+            <div class="card-title"><span class="icon"><i class="fas fa-newspaper"></i></span><h3>Constructed <span class="method constructed">2 tasks</span></h3></div>
+            <p>VNRTE and VToC are new corpora built from VnExpress news articles. VToC labels each article's abstract sentence with the article's topic.</p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="highlight-card">
+            <div class="card-title"><span class="icon"><i class="fas fa-folder-open"></i></span><h3>Collected <span class="method collected">2 tasks</span></h3></div>
+            <p>VSFC (student feedback) and VSMEC (social media emotions) are existing Vietnamese datasets, cleaned by removing emoticons and emojis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-block">
+        <h3 class="title is-5">VNRTE construction pipeline</h3>
+        <div class="figure-card">
+          <img src="static/images/vnrte_pipeline.png" loading="lazy"
+               alt="VNRTE pipeline: crawl and preprocess news articles, generate entailment sentences with a GPT model and filter them by semantic similarity, and find non-entailment sentences by semantic similarity search.">
+        </div>
+        <div class="content">
+          <ul>
+            <li><b>Entailment:</b> a GPT model rewrites an article's abstract sentence. Pairs with a cosine similarity below 0.9 are rewritten again, for up to four rounds, and then removed.</li>
+            <li><b>Not entailment:</b> a sentence from the same article whose similarity to the abstract is between 0.3 and 0.4, so it is on the same topic but does not follow from it.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+
+      <h3 class="title is-5">Fine-tuned baselines</h3>
+      <p>We fine-tune four multilingual encoders on each task (three seeds each) and report the best validation score. ZeroR always predicts the majority class.</p>
+      <div class="table-container">
+        <table class="table is-fullwidth is-narrow baseline-table">
+          <thead>
+            <tr class="group-head">
+              <th></th>
+              <th colspan="5">Inference</th>
+              <th colspan="3">Sentiment</th>
+              <th colspan="2">Paraphrase</th>
+              <th colspan="2">Single sentence</th>
+            </tr>
+            <tr>
+              <th>Model</th>
+              <th>MNLI</th><th>QNLI</th><th>RTE</th><th>VNRTE</th><th>WNLI</th>
+              <th>SST2</th><th>VSFC</th><th>VSMEC</th>
+              <th>MRPC</th><th>QQP</th>
+              <th>CoLA</th><th>VToC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="metric-row"><td></td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc.</td><td>Acc./F1</td><td>Acc./F1</td><td>MCC</td><td>Acc.</td></tr>
+            <tr class="zeror"><td>ZeroR</td><td>35.45</td><td>50.54</td><td>52.71</td><td>53.11</td><td class="best">56.34</td><td>50.92</td><td>50.85</td><td>31.20</td><td>68.38/81.22</td><td>63.38/0.00</td><td>0.00</td><td>6.77</td></tr>
+            <tr><td>mBERT</td><td>79.66</td><td>89.11</td><td class="best">70.76</td><td>99.97</td><td class="best">56.34</td><td>88.42</td><td>93.62</td><td>53.64</td><td>85.29/88.85</td><td>89.12/85.16</td><td>14.13</td><td>81.43</td></tr>
+            <tr><td>XLM-R<sub>base</sub></td><td>81.61</td><td>88.17</td><td>62.45</td><td class="best">100.00</td><td class="best">56.34</td><td>89.45</td><td>94.95</td><td>55.25</td><td>83.82/88.26</td><td>89.46/85.87</td><td>3.64</td><td>83.07</td></tr>
+            <tr><td>XLM-R<sub>large</sub></td><td>35.45</td><td class="best">91.23</td><td>67.51</td><td class="best">100.00</td><td>54.93</td><td class="best">90.14</td><td class="best">95.39</td><td>37.90</td><td class="best">88.24/91.64</td><td class="best">90.48/87.22</td><td>0.00</td><td class="best">87.82</td></tr>
+            <tr><td>mDeBERTaV3</td><td class="best">83.34</td><td>89.99</td><td>69.31</td><td>99.97</td><td class="best">56.34</td><td>89.79</td><td>95.07</td><td class="best">55.39</td><td>86.52/90.05</td><td>89.98/86.69</td><td class="best">19.62</td><td>80.88</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small-caption">Validation results &times; 100; MNLI uses the matched validation set. The best score for each task is in blue.
+        The paper also reports PhoBERT and ViDeBERTa and every seed.</p>
+      <div class="content">
+        <ul>
+          <li>XLM-R<sub>large</sub> is best on seven of twelve tasks, and XLM-R<sub>base</sub> never beats it, so a larger model helps on most tasks.</li>
+          <li>mDeBERTaV3 is second: it is best on MNLI, VSMEC, and CoLA, and within 1 point of the best model on most other tasks.</li>
+          <li>On WNLI, every model scores at or below the majority baseline.</li>
+        </ul>
+      </div>
+
+      <div class="result-block">
+        <h3 class="title is-5">Few-shot prompting of LLMs</h3>
+        <p>We prompt the BLOOM family (560M to 176B) and the Vietnamese PhoGPT-7B5 with <i>k</i> = 0, 1, 2, or 4 examples in the context, without fine-tuning.
+          The paper's appendix also evaluates community Vietnamese LLMs (Vietcuna and Hoa).</p>
+        <div class="figure-tabs" role="tablist" aria-label="Few-shot figures">
+          <button type="button" role="tab" data-tab="fewshot-phogpt" aria-selected="true" class="is-active">BLOOM-7B1 vs. PhoGPT</button>
+          <button type="button" role="tab" data-tab="fewshot-bloom" aria-selected="false">Across BLOOM sizes</button>
+        </div>
+        <div class="tab-panel" id="fewshot-phogpt" role="tabpanel">
+          <div class="figure-card">
+            <img src="static/images/bloom7b1_vs_phogpt7b5_updated.svg" loading="lazy"
+                 alt="BLOOM-7B1 and PhoGPT-7B5 scores on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+          </div>
+          <p class="small-caption">Scores &times; 100. All tasks use accuracy except CoLA (MCC).</p>
+          <div class="content">
+            <ul>
+              <li>With zero-shot prompts, PhoGPT beats BLOOM-7B1 on six of twelve tasks. With <i>k</i> = 1, 2, and 4, BLOOM-7B1 wins on five, seven, and five tasks.</li>
+              <li>Zero-shot prompts score highest on CoLA, MNLI, MRPC, QQP, and WNLI; more examples help on QNLI and VNRTE.</li>
+              <li>On QQP, SST2, VSFC, and VSMEC, scores go up and down as <i>k</i> changes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-panel" id="fewshot-bloom" role="tabpanel" hidden>
+          <div class="figure-card">
+            <img src="static/images/bloom.all_shots.v2.svg" loading="lazy"
+                 alt="Few-shot scores of six BLOOM models on the twelve ViGLUE tasks for k = 0, 1, 2, and 4.">
+          </div>
+          <p class="small-caption">Stars, plus signs, circles, and diamonds mark <i>k</i> = 0, 1, 2, and 4.</p>
+          <div class="content">
+            <ul>
+              <li>More examples help every BLOOM size on QNLI, while CoLA, MNLI, MRPC, and QQP are always best at <i>k</i> = 0.</li>
+              <li>BLOOM-176B beats the smaller models only on QNLI, RTE, and SST2.</li>
+              <li>Larger models improve on QNLI, QQP, RTE, SST2, VSFC, and VSMEC, but the smallest model, BLOOM-560M, is best on VNRTE and WNLI.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{tran-etal-2024-viglue,
+  title     = {{V}i{GLUE}: A {V}ietnamese General Language Understanding Benchmark and Analysis of {V}ietnamese Language Models},
+  author    = {Tran, Minh-Nam and Nguyen, Phu-Vinh and Nguyen, Long and Dinh, Dien},
+  editor    = {Duh, Kevin and Gomez, Helena and Bethard, Steven},
+  booktitle = {Findings of the {A}ssociation for {C}omputational {L}inguistics: {NAACL} 2024},
+  month     = jun,
+  year      = {2024},
+  address   = {Mexico City, Mexico},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2024.findings-naacl.261/},
+  doi       = {10.18653/v1/2024.findings-naacl.261},
+  pages     = {4174--4189}
+}</code></pre>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -168,6 +168,26 @@ $(document).ready(function() {
 
 })
 
+// Dataset preview on touch screens: the viewer scrolls its own table, so a swipe
+// that starts on it would never scroll the page. A cover lies over it until tapped,
+// and comes back once the viewer has been scrolled out of view.
+document.addEventListener('DOMContentLoaded', function() {
+    const shield = document.querySelector('.viewer-shield');
+    if (!shield) return;
+
+    shield.addEventListener('click', function() {
+        shield.hidden = true;
+    });
+
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) shield.hidden = false;
+            });
+        }).observe(shield.parentElement);
+    }
+});
+
 // Dataset preview: switch the Hugging Face viewer to another ViGLUE task
 document.addEventListener('DOMContentLoaded', function() {
     const picker = document.querySelector('.subset-picker');

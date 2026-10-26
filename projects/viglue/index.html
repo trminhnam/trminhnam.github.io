@@ -367,6 +367,10 @@
       <div class="viewer-frame">
         <iframe id="hf-viewer" src="https://huggingface.co/datasets/tmnam20/ViGLUE/embed/viewer/cola/train"
                 title="ViGLUE on the Hugging Face dataset viewer" loading="lazy"></iframe>
+        <!-- Touch screens: swipes on this cover scroll the page; a tap removes it so the viewer can be used -->
+        <button type="button" class="viewer-shield" aria-label="Browse the dataset">
+          <span><i class="fas fa-hand-pointer"></i> Tap to browse the dataset</span>
+        </button>
       </div>
       <div class="code-block">
         <button class="copy-bibtex-btn copy-code-btn" onclick="copyCode(this)" title="Copy code to clipboard">

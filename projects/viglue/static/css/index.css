@@ -1198,3 +1198,44 @@ a:focus {
     position: absolute;
   }
 }
+
+/* Dataset viewer on touch screens: see the .viewer-shield handler in static/js/index.js */
+.viewer-frame {
+  position: relative;
+}
+
+.viewer-shield {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .viewer-shield {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 1.25rem;
+    border: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgb(15 23 42 / 0.25));
+    cursor: pointer;
+  }
+
+  .viewer-shield[hidden] {
+    display: none;
+  }
+
+  .viewer-shield span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    background: var(--text-primary);
+    color: white;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+  }
+}

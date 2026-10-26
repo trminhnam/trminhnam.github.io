@@ -13,6 +13,7 @@ Run `make` to list these.
 | `make check`            | Run the formatting check and a test build (the same checks GitHub runs)        |
 | `make build`            | Build the site into `_site/`                                                   |
 | `make clean`            | Delete build output, caches, and `.DS_Store` files                             |
+| `make pull`             | Pull the latest site code from GitHub, then the latest project websites        |
 | `make update-projects`  | Pull the latest version of each project website in `projects/`                 |
 | `make install`          | Install the Ruby and JavaScript dependencies, and fetch the project websites   |
 | `make distclean`        | `clean`, plus delete the installed dependencies (run `make install` afterward) |

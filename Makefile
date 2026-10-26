@@ -4,7 +4,7 @@ BRANCH := $(shell git branch --show-current)
 m ?= Update site ($(shell date +%Y-%m-%d))
 
 .DEFAULT_GOAL := help
-.PHONY: help install serve build check push clean distclean update-projects
+.PHONY: help install serve build check push pull clean distclean update-projects
 
 help: ## List available commands
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-16s %s\n", $$1, $$2}'
@@ -21,6 +21,11 @@ serve: ## Run the site locally at http://localhost:4000/ (auto-rebuilds on save)
 
 build: ## Build the site into _site/
 	bundle exec jekyll build
+
+pull: ## Pull the latest site code from GitHub, then the latest project websites
+	@# --autostash keeps uncommitted edits (including moved submodules) out of the rebase's way
+	git pull --rebase --autostash origin $(BRANCH)
+	@$(MAKE) --no-print-directory update-projects
 
 update-projects: ## Pull the latest version of every project website under projects/
 	git submodule update --init --remote

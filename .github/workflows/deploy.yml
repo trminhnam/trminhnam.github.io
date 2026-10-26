@@ -112,6 +112,10 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Stamp project websites 🏷️
+        # Each project repo's publish.yml waits for projects/<name>/version.txt to show its commit, so this full deploy
+        # writes the same file; otherwise replacing the folder would make that check fail.
+        run: git submodule foreach --quiet 'git rev-parse HEAD > "$toplevel/_site/$sm_path/version.txt"'
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

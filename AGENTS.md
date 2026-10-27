@@ -76,7 +76,7 @@ All five `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the 
 
 Each project page is its own repo, served at `/projects/<name>/` ([details](README.md#project-websites)).
 
-1. **Project repo:** copy `projects/graphniah/.github/workflows/publish.yml` and set `target-folder: projects/<name>`. Keep asset links relative (`static/...`).
+1. **Project repo:** copy `projects/_template-eliahuhorwitz/` and follow its README, which replaces the placeholders (including `target-folder: projects/<name>` in `publish.yml`). Keep asset links relative (`static/...`).
 2. **Token:** give the `PROJECT_SITES_TOKEN` fine-grained token access to the new repo, and add it there as an Actions secret. Without access, the whole site deploy fails.
 3. **Publish:** push the project repo to `main`.
 4. **This repo:** `git submodule add -b main git@github.com:trminhnam/<repo>.git projects/<name>`, add a row to the README table, and add `website = {https://trminhnam.github.io/projects/<name>/}` to the paper's entry in `_bibliography/papers.bib`.

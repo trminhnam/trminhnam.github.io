@@ -1,0 +1,60 @@
+name: Publish to trminhnam.github.io
+
+# This page is served at https://trminhnam.github.io/projects/PROJECT_SLUG/. After each
+# push, copy it straight into the published site (the gh-pages branch of
+# trminhnam/trminhnam.github.io), replacing only projects/PROJECT_SLUG/; the rest of
+# the personal website is left as it is and not rebuilt. The last step waits until
+# projects/PROJECT_SLUG/version.txt on the live site shows this commit, so the run
+# fails if the page never goes live.
+#
+# Needs an Actions secret PROJECT_SITES_TOKEN: a fine-grained token with
+# "Contents: Read and write" access to trminhnam/trminhnam.github.io.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # checkout v6+ keeps its own token in a separate git config file that
+          # the deploy action cannot remove; that token would then push as
+          # github-actions[bot] and get a 403 from trminhnam.github.io.
+          persist-credentials: false
+
+      - name: Collect the website files
+        run: |
+          rsync -a --exclude .git --exclude .github --exclude .gitignore --exclude README.md ./ "$RUNNER_TEMP/site/"
+          echo "$GITHUB_SHA" > "$RUNNER_TEMP/site/version.txt"
+
+      - name: Publish to trminhnam.github.io/projects/PROJECT_SLUG/
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.PROJECT_SITES_TOKEN }}
+          repository-name: trminhnam/trminhnam.github.io
+          branch: gh-pages
+          folder: ${{ runner.temp }}/site
+          target-folder: projects/PROJECT_SLUG
+          commit-message: "Publish PROJECT_NAME project page from ${{ github.sha }}"
+
+      - name: Wait for the page to go live
+        run: |
+          url="https://trminhnam.github.io/projects/PROJECT_SLUG/version.txt"
+          for i in $(seq 1 30); do
+            # The query string skips any cached copy.
+            if [ "$(curl -fsS "$url?run=$GITHUB_RUN_ID-$i" || true)" = "$GITHUB_SHA" ]; then
+              echo "Live: $url"
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::$url still doesn't show $GITHUB_SHA after 10 minutes"
+          exit 1

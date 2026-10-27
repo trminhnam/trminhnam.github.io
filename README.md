@@ -103,7 +103,7 @@ Because the project repositories are private, both workflows need a token:
 1. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with access to this repository and every project website repository, with the **Contents: Read and write** permission.
 2. Add it as an Actions secret named `PROJECT_SITES_TOKEN` in this repository (Settings → Secrets and variables → Actions), and in each project website repository.
 
-For a new project website, copy [`projects/graphniah/.github/workflows/publish.yml`](https://github.com/trminhnam/GraphNIAH-project-website/blob/main/.github/workflows/publish.yml) into its repository and change `target-folder` to `projects/<name>`.
+For a new project website, start from [`projects/_template-eliahuhorwitz/`](projects/_template-eliahuhorwitz/README.md): a page skeleton and publish workflow, with every step from copying it to publishing the page. It is not published itself.
 
 To add another project website:
 

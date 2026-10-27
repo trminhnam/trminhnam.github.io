@@ -1,10 +1,11 @@
 ---
 layout: page
-title: Notes/Blogs
+title: Learning Notes
 permalink: /blog_notes
-nav: true
-nav_order: 5
-redirect: /notes
+# Kept so old links to /blog_notes still work; the navbar links to the notes directly (notes_link.md)
+nav: false
+redirect: /notes/
+sitemap: false
 ---
 
 <br />
@@ -18,9 +19,9 @@ redirect: /notes
     <div style="position: absolute; background: #222; width: 6px; height: 2px; -webkit-animation: loading 2s 1s infinite; -moz-animation: loading 2s 1s infinite; -ms-animation: loading 2s 1s infinite; -o-animation: loading 2s 1s infinite; animation: loading 2s 1s infinite;"></div>
 </div>
 <p>
-    Redirecting to <a href="/notes">trminhnam.github.io/notes</a>.
+    Redirecting to <a href="/notes/">trminhnam.github.io/notes</a>.
     <br />
-    If it doesn't work, please <a href="/notes">click here</a>.
+    If it doesn't work, please <a href="/notes/">click here</a>.
 </p>
 <style>
     @keyframes "loading" {

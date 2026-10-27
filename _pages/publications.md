@@ -4,7 +4,7 @@ permalink: /publications/
 title: Publications
 description: "This page contains a list of my publications. You can also find them on my Google Scholar profile.<br>Equal contribution is indicated by an asterisk (*) after the author's name."
 nav: true
-nav_order: 2
+nav_order: 1
 ---
 
 <!-- _pages/publications.md -->

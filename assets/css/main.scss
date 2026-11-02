@@ -1,0 +1,73 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+/* Built-in Sass modules you’ll likely use across partials */
+@use "sass:math";
+@use "sass:string";
+
+/* Configure your design tokens BEFORE loading any of your partials.
+   Make sure `_sass/_variables.scss` declares `$max-content-width: 72rem !default;` */
+@use "variables" with (
+  $max-content-width: {{site.max_width | default: "930px"}}
+);
+
+/* Your project partials — convert these files to `@use "variables";`
+   (or `@use "variables" as *;`) inside each file and qualify variables if needed. */
+@use "themes";
+@use "layout";
+
+// Core styles organized by usage
+@use "typography";
+@use "navbar";
+@use "footer";
+@use "blog";
+@use "publications";
+@use "components";
+@use "utilities";
+
+// Other specialized styles
+@use "tabs";
+@use "teachings";
+@use "typograms";
+
+/* ---------------------------------------------------------------------------
+ * Local additions (not in al_folio_core)
+ * ------------------------------------------------------------------------- */
+
+// Publications: the gap between two papers is always 2.5rem (40px), whether
+// the Abs/Bib panels are open or closed. Only `margin-bottom` sets the gap;
+// the other rules remove spacing that would otherwise add to it.
+.publications ol.bibliography li {
+  margin-bottom: 2.5rem;
+
+  // Keep button-row spacing above the buttons, not below the last row.
+  .links a.btn {
+    margin-top: 0.375rem;
+    margin-bottom: 0;
+  }
+
+  // Nothing under the thumbnail when it is taller than the text.
+  .abbr figure {
+    margin-bottom: 0;
+  }
+
+  // Closed panels take no space; open ones sit 0.5rem below the buttons.
+  .hidden {
+    border-width: 0 !important;
+  }
+
+  .hidden.open {
+    border-width: 1px !important;
+    margin-top: 0.5rem;
+  }
+
+  // The BibTeX code box fills its panel, so no margins sit above or below it.
+  .hidden figure,
+  .hidden pre {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

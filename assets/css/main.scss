@@ -43,10 +43,16 @@
 .publications ol.bibliography li {
   margin-bottom: 2.5rem;
 
-  // Keep button-row spacing above the buttons, not below the last row.
   .links a.btn {
+    // Keep button-row spacing above the buttons, not below the last row.
     margin-top: 0.375rem;
     margin-bottom: 0;
+    // Same width for every button (fits "Website", the longest label), label centred.
+    // `min-width` rather than `width`, so a longer custom label (e.g. an award name) still fits.
+    min-width: 7.5em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
   }
 
   // Nothing under the thumbnail when it is taller than the text.
